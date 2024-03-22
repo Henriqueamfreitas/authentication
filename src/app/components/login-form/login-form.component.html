@@ -1,34 +1,36 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <div>
-    <input type="email" placeholder="E-mail" formControlName="email">
-    <p
-      *ngIf="errors.email?.['required']  &&
-      (loginForm.get('email')?.value !== null || loginForm.get('email')?.touched)"
-    >
-      O e-mail é obrigatório
-    </p>
-    <p
-      *ngIf="errors.email?.['email']  &&
-      (loginForm.get('email')?.value !== null || loginForm.get('email')?.touched)"
-    >
-      Preencha com um e-mail válido
-    </p>
-  </div>
+  <div class="inputs">
+    <div>
+      <input class="text two" type="email" placeholder="E-mail" formControlName="email">
+      <p class="text two red"
+        *ngIf="errors.email?.['required']  &&
+        (loginForm.get('email')?.value !== null || loginForm.get('email')?.touched)"
+      >
+        O e-mail é obrigatório
+      </p>
+      <p class="text two red"
+        *ngIf="errors.email?.['email']  &&
+        (loginForm.get('email')?.value !== null || loginForm.get('email')?.touched)"
+      >
+        Preencha com um e-mail válido
+      </p>
+    </div>
 
-  <div>
-    <input type="password" placeholder="Senha" formControlName="password">
-    <p
-      *ngIf="errors.password?.['required']  &&
-      (loginForm.get('password')?.value !== null || loginForm.get('password')?.touched)"
-    >
-      A senha é obrigatória
-    </p>
-    <p
-      *ngIf="errors.password?.['minlength']  &&
-      (loginForm.get('password')?.value !== null || loginForm.get('password')?.touched)"
-    >
-      A senha deve ter no mínimo 8 caracteres
-    </p>
+    <div>
+      <input class="text two" type="password" placeholder="Senha" formControlName="password">
+      <p class="text two red"
+        *ngIf="errors.password?.['required']  &&
+        (loginForm.get('password')?.value !== null || loginForm.get('password')?.touched)"
+      >
+        A senha é obrigatória
+      </p>
+      <p class="text two red"
+        *ngIf="errors.password?.['minlength']  &&
+        (loginForm.get('password')?.value !== null || loginForm.get('password')?.touched)"
+      >
+        A senha deve ter no mínimo 8 caracteres
+      </p>
+    </div>
   </div>
-  <button type="submit">Login</button>
+  <button class="text three" type="submit">Login</button>
 </form>

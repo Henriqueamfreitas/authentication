@@ -1,0 +1,40 @@
+.title{
+  font-weight: 700;
+  color: var(--color-black);
+}
+.title.one{
+  font-size: 2rem;
+}
+
+.title.two{
+  font-size: 1.5rem;
+}
+
+.title.three{
+  font-size: 1.25rem;
+}
+
+.text{
+  font-weight: 500;
+  color: var(--color-black);
+}
+
+.text.one{
+  font-size: 1.125rem;
+}
+
+.text.two{
+  font-size: 1rem;
+}
+
+.text.three{
+  font-size: .875rem;
+}
+
+.text.four{
+  font-size: .75rem;
+}
+
+.title.red, .text.red{
+  color: var(--color-red);
+}

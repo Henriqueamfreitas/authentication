@@ -42,6 +42,9 @@ export class PostEditFormComponent {
 
 
   onSubmit(){
+    if(this.postEditForm.status === 'INVALID'){
+      return alert('Preencha todos os campos')
+    }
     const data = this.postEditForm.value as TUpdatePost
     this.postService.update(data)
     this.postService.setEditingPost(null)

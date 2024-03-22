@@ -30,6 +30,9 @@ export class PostCreateFormComponent {
   }
 
   onSubmit(){
+    if(this.postForm.status==='INVALID'){
+      return alert('Preencha todos os campos')
+    }
     const data = this.postForm.value as TCreateDataPost
     this.postService.create(data)
     this.postForm.reset()

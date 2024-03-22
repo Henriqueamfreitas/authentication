@@ -1,21 +1,36 @@
 <app-private-routes>
   <main>
-    <div>
-      <p>{{ user?.name }} - {{ user?.job }}</p>
-      <p>{{ user?.email }}</p>
-      <button (click)="handleLogout()">Sair</button>
+    <div class="container">
+      <div class="container__top">
+        <h1 class="title one">Posts</h1>
+        <div class="container__top--div">
+          <p class="text one">{{ user?.name }}</p>
+          <button class="text three" (click)="handleLogout()">Sair</button>
+        </div>
+      </div>
+      <app-post-create-form></app-post-create-form>
+      <ul class="container__list" *ngIf="postList.length>0">
+        <li class="container__list--card" *ngFor="let post of postList">
+          <h2 class="title two">{{post.title}}</h2>
+          <span class="text one">Autor: {{user?.name}}</span>
+          <span class="text one">Categoria: {{post.category}}</span>
+          <p class="text two">{{post.content}}</p>
+          <div>
+            <button class="text three" (click)="handleEdit(post)">
+              <span class="material-symbols-outlined">
+                edit
+              </span>
+            </button>
+            <button class="text three" (click)="handleDelete(post.id)">
+              <span class="material-symbols-outlined">
+                delete
+              </span>
+            </button>
+          </div>
+        </li>
+      </ul>
+      <p class="text one" *ngIf="postList.length===0">Cadastre sua primeira notícia</p>
+      <app-post-edit-form *ngIf="editingPost"></app-post-edit-form>
     </div>
-    <app-post-create-form></app-post-create-form>
-    <ul *ngIf="postList.length>0">
-      <li *ngFor="let post of postList">
-        <h2>{{post.title}} - {{user?.name}}</h2>
-        <span>{{post.category}}</span>
-        <p>{{post.content}}</p>
-        <button (click)="handleEdit(post)">Editar</button>
-        <button (click)="handleDelete(post.id)">Remover</button>
-      </li>
-    </ul>
-    <p *ngIf="postList.length===0">Cadastre sua primeira notícia</p>
-    <app-post-edit-form *ngIf="editingPost"></app-post-edit-form>
   </main>
 </app-private-routes>
