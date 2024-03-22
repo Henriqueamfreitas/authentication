@@ -1,12 +1,60 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <input type="text" placeholder="Nome" formControlName="" formControlName="name">
-  <input type="email" placeholder="Email" formControlName="email">
-  <input type="password" placeholder="Senha" formControlName="password">
-  <select formControlName="job">
-    <option value="null">Selecione uma profissão</option>
-    <option value="frontend">Front-end</option>
-    <option value="backend">Back-end</option>
-    <option value="fullstack">Fullstack</option>
-  </select>
+  <div>
+    <input type="text" placeholder="Nome" formControlName="name">
+    <p
+      *ngIf="errors.name?.['required']  &&
+      (registerForm.get('name')?.value !== null || registerForm.get('name')?.touched)"
+    >
+      O nome é obrigatório
+    </p>
+  </div>
+
+  <div>
+    <input type="email" placeholder="E-mail" formControlName="email">
+    <p
+      *ngIf="errors.email?.['required']  &&
+      (registerForm.get('email')?.value !== null || registerForm.get('email')?.touched)"
+    >
+      O e-mail é obrigatório
+    </p>
+    <p
+      *ngIf="errors.email?.['email']  &&
+      (registerForm.get('email')?.value !== null || registerForm.get('email')?.touched)"
+    >
+      Preencha com um e-mail válido
+    </p>
+  </div>
+
+  <div>
+    <input type="password" placeholder="Senha" formControlName="password">
+    <p
+      *ngIf="errors.password?.['required']  &&
+      (registerForm.get('password')?.value !== null || registerForm.get('password')?.touched)"
+    >
+      A senha é obrigatória
+    </p>
+    <p
+      *ngIf="errors.password?.['minlength']  &&
+      (registerForm.get('password')?.value !== null || registerForm.get('password')?.touched)"
+    >
+      A senha deve ter no mínimo 8 caracteres
+    </p>
+  </div>
+
+  <div>
+    <select formControlName="job">
+      <option value="null">Selecione uma profissão</option>
+      <option value="frontend">Front-end</option>
+      <option value="backend">Back-end</option>
+      <option value="fullstack">Fullstack</option>
+    </select>
+    <p
+      *ngIf="errors.job?.['required']  &&
+      (registerForm.get('job')?.value !== null || registerForm.get('job')?.touched)"
+    >
+      A profissão é obrigatória
+    </p>
+  </div>
+
   <button type="submit">Cadastrar</button>
 </form>

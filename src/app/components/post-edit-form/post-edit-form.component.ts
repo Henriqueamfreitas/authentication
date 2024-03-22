@@ -1,12 +1,13 @@
 import { Component, effect } from '@angular/core';
-import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PostService } from '../../services/post.service';
 import { TUpdatePost } from '../../interfaces/post.interface';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-post-edit-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './post-edit-form.component.html',
   styleUrl: './post-edit-form.component.css'
 })
@@ -26,10 +27,19 @@ export class PostEditFormComponent {
   }
 
   postEditForm = new FormGroup({
-    category: new FormControl<string | null>(this.editingPost?.category as string),
-    title: new FormControl<string | null>(null),
-    content: new FormControl<string | null>(null),
+    category: new FormControl<string | null>(this.editingPost?.category as string, [Validators.required]),
+    title: new FormControl<string | null>(null, [Validators.required]),
+    content: new FormControl<string | null>(null, [Validators.required]),
   })
+
+  get errors(){
+    return {
+      category: this.postEditForm.get('category')?.errors,
+      title: this.postEditForm.get('title')?.errors,
+      content: this.postEditForm.get('content')?.errors,
+    }
+  }
+
 
   onSubmit(){
     const data = this.postEditForm.value as TUpdatePost

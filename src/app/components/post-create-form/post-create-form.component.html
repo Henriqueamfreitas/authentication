@@ -1,12 +1,38 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="postForm">
-  <select formControlName="category">
-    <option value="null">Categoria</option>
-    <option value="Política">Política</option>
-    <option value="Fofoca">Fofoca</option>
-    <option value="Educação">Educação</option>
-    <option value="Tecnologia">Tecnologia</option>
-  </select>
-  <input type="text" placeholder="Título" formControlName="title">
-  <textarea placeholder="Conteúdo" formControlName="content"></textarea>
+  <div>
+    <select formControlName="category">
+      <option value="null">Categoria</option>
+      <option value="Política">Política</option>
+      <option value="Fofoca">Fofoca</option>
+      <option value="Educação">Educação</option>
+      <option value="Tecnologia">Tecnologia</option>
+    </select>
+    <p
+      *ngIf="errors.category?.['required']  &&
+      (postForm.get('category')?.value !== null || postForm.get('category')?.touched)"
+    >
+      A categoria é obrigatória
+    </p>
+  </div>
+
+  <div>
+    <input type="text" placeholder="Título" formControlName="title">
+    <p
+      *ngIf="errors.title?.['required']  &&
+      (postForm.get('title')?.value !== null || postForm.get('title')?.touched)"
+    >
+      O título é obrigatório
+    </p>
+  </div>
+
+  <div>
+    <textarea placeholder="Conteúdo" formControlName="content"></textarea>
+    <p
+      *ngIf="errors.content?.['required']  &&
+      (postForm.get('content')?.value !== null || postForm.get('content')?.touched)"
+    >
+      O conteúdo é obrigatório
+    </p>
+  </div>
   <button type="submit">Enviar</button>
 </form>
