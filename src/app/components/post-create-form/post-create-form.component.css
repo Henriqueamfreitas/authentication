@@ -4,8 +4,8 @@ form{
   gap: 1rem;
   background-color: var(--color-white);
   padding: 1.5rem .75rem;
+  margin: 1rem 1rem 1.5rem 1rem;
   border-radius: .25rem;
-  margin-bottom: 1.5rem;
 }
 
 .inputs{
