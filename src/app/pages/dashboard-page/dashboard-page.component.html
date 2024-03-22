@@ -5,5 +5,17 @@
       <p>{{ user?.email }}</p>
       <button (click)="handleLogout()">Sair</button>
     </div>
+    <app-post-create-form></app-post-create-form>
+    <ul *ngIf="postList.length>0">
+      <li *ngFor="let post of postList">
+        <h2>{{post.title}} - {{user?.name}}</h2>
+        <span>{{post.category}}</span>
+        <p>{{post.content}}</p>
+        <button (click)="handleEdit(post)">Editar</button>
+        <button (click)="handleDelete(post.id)">Remover</button>
+      </li>
+    </ul>
+    <p *ngIf="postList.length===0">Cadastre sua primeira notícia</p>
+    <app-post-edit-form *ngIf="editingPost"></app-post-edit-form>
   </main>
 </app-private-routes>
