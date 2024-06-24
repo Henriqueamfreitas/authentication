@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+**Aplicação**: 
+Aplicação angular que consome uma API, na qual é possível cadastrar novos usuários e fazer login para uma página privada. Além disso, não é possível acessar rotas públicas se o usuário estiver logado  e nem é possível acessar rotas privadas se não estiver logado.
+
+**Tecnologias**: HTML, Angular, CSS, Javascript 
+
+**Link**: https://authentication-ecru-zeta.vercel.app/
+
+
